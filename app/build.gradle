@@ -1,5 +1,15 @@
 apply plugin: 'com.android.application'
 
+def getAppVersionCode = { ->
+    def code = project.hasProperty('versionCode') ? versionCode.toInteger() : 1
+    return code
+}
+
+def getAppVersionName = { ->
+    def name = project.hasProperty('versionName') ? versionName : "1.0"
+    return name
+}
+
 android {
     compileSdkVersion 24
     buildToolsVersion '24.0.1'
@@ -8,8 +18,8 @@ android {
         applicationId "com.hannaford.android"
         minSdkVersion 19
         targetSdkVersion 24
-        versionCode 1
-        versionName "1.0"
+        versionCode getAppVersionCode()
+        versionName getAppVersionName()
         manifestPlaceholders = [HOCKEYAPP_APP_ID: "d9b6adf56add4fbd990147d86e71d21c"]
     }
     buildTypes {

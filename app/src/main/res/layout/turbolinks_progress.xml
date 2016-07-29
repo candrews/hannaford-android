@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="?attr/actionBarSize"
+    android:background="@android:color/transparent">
+
+    <ProgressBar
+        android:id="@+id/turbolinks_progress_indicator"
+        android:layout_width="fill_parent"
+        android:layout_height="8dp"
+        android:indeterminate="true"
+        style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_gravity="top"/>
+
+</FrameLayout>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE resources [
+    <!ENTITY host "hannaford.integralblue.com">
+    ]>
+<resources>
+    <string name="app_name">Hannaford</string>
+    <string name="share">Share</string>
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
+    <string name="search_title">Search</string>
+    <string name="search_camera_title">Camera Search</string>
+    <string name="search_hint">Search</string>
+
+    <string name="ok">OK</string>
+    <string name="permission_camera_rationale">Access to the camera is needed for detection</string>
+    <string name="no_camera_permission">Barcode scanning can not be done because camera permissions were not granted.</string>
+    <string name="low_storage_error">Barcode detector dependencies cannot be downloaded due to low device storage</string>
+    <string name="barcode_header">Click &quot;Read Barcode&quot; to read a barcode</string>
+    <string name="read_barcode">Read Barcode</string>
+    <string name="auto_focus">Auto Focus</string>
+    <string name="use_flash">Use Flash</string>
+    <string name="barcode_success">Barcode read successfully</string>
+    <string name="barcode_failure">No barcode captured</string>
+    <string name="barcode_error">"Error reading barcode: %1$s"</string>
+    <string name="barcode_title">Read Barcode</string>
+    <string name="barcode_instructions">Tap to capture. Pinch/Stretch to zoom</string>
+    <string name="print">Print</string>
+    <string name="feedback">Feedback</string>
+
+    <string name="host">&host;</string>
+    <string name="www.host">www.&host;</string>
+    <string name="base_url">https://&host;</string>
+</resources>

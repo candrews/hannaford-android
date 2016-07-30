@@ -201,6 +201,7 @@ public class MainActivity extends AppCompatActivity implements TurbolinksAdapter
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         checkForUpdates();
+        CrashManager.register(this);
 
         baseUrl = getResources().getString(R.string.base_url);
         urlFixerPattern = Pattern.compile("^https?://(?:" + Pattern.quote(getResources().getString(R.string.www_host)) + "|" + Pattern.quote(getResources().getString(R.string.host)) + ")", Pattern.CASE_INSENSITIVE);

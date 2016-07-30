@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.app.Application;
 import android.os.Bundle;
 
-import net.hockeyapp.android.CrashManager;
 import net.hockeyapp.android.Tracking;
 import net.hockeyapp.android.UpdateManager;
 import net.hockeyapp.android.metrics.MetricsManager;
@@ -31,7 +30,6 @@ public class HannafordApplication extends Application {
             @Override
             public void onActivityResumed(Activity activity) {
                 Tracking.startUsage(activity);
-                CrashManager.register(activity);
             }
 
             @Override

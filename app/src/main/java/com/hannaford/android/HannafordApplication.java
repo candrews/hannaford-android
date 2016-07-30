@@ -20,8 +20,7 @@ public class HannafordApplication extends Application {
         registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacks() {
             @Override
             public void onActivityCreated(Activity activity, Bundle bundle) {
-                // Remove this for store builds!
-                UpdateManager.register(activity);
+
             }
 
             @Override

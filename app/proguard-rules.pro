@@ -22,3 +22,7 @@
 -keep class android.support.v4.** { *; }
 -dontwarn android.support.v7.**
 -keep class android.support.v7.** { *; }
+-keepclassmembers class * {
+    @android.webkit.JavascriptInterface <methods>;
+}
+-keepattributes JavascriptInterface

@@ -440,7 +440,9 @@ public class MainActivity extends AppCompatActivity implements TurbolinksAdapter
 
     private void checkForUpdates() {
         // Remove this for store builds!
-        UpdateManager.register(this);
+        if(! BuildConfig.DEBUG) {
+            UpdateManager.register(this);
+        }
     }
 
     private void unregisterManagers() {

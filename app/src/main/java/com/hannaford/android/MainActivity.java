@@ -289,6 +289,8 @@ public class MainActivity extends AppCompatActivity implements TurbolinksAdapter
                 .adapter(this)
                 .view(turbolinksView);
 
+        handleLocation(baseUrl + SHELL_RELATIVE_URL);
+
         handleIntent(getIntent());
 
     }

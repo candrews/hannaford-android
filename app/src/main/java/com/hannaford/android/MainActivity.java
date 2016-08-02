@@ -328,13 +328,18 @@ public class MainActivity extends AppCompatActivity implements TurbolinksAdapter
     protected void onSaveInstanceState(Bundle outState) {
         outState.putString("location",location);
         super.onSaveInstanceState(outState);
+
+        // IMHO TurbolinksView should be saving the WebView state: https://github.com/turbolinks/turbolinks-android/issues/28
         webView.saveState(outState);
     }
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
+
+        // IMHO TurbolinksView should be saving the WebView state: https://github.com/turbolinks/turbolinks-android/issues/28
         webView.restoreState(savedInstanceState);
+
         this.location = webView.getUrl();
         handleLocation(savedInstanceState.getString("location"));
     }

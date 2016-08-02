@@ -289,8 +289,6 @@ public class MainActivity extends AppCompatActivity implements TurbolinksAdapter
                 .adapter(this)
                 .view(turbolinksView);
 
-        handleLocation(baseUrl + SHELL_RELATIVE_URL);
-
         handleIntent(getIntent());
 
     }
@@ -427,9 +425,13 @@ public class MainActivity extends AppCompatActivity implements TurbolinksAdapter
             }else {
                 //Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(location), this, MainActivity.class);
                 //setIntent(intent);
-                this.location = location;
                 TurbolinksSession.getDefault(this).progressView(LayoutInflater.from(this).inflate(R.layout.turbolinks_progress, turbolinksView, false), R.id.turbolinks_progress_indicator, 500);
-                TurbolinksSession.getDefault(this).visit(location);
+                if(this.location==null){
+                    TurbolinksSession.getDefault(this).visit(baseUrl + SHELL_RELATIVE_URL + "#" + location);
+                }else{
+                    TurbolinksSession.getDefault(this).visit(location);
+                }
+                this.location = location;
             }
         }else{
             // not a URL we handle, so open something else (probably a web browser to take care of it)

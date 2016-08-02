@@ -288,6 +288,7 @@ public class MainActivity extends AppCompatActivity implements TurbolinksAdapter
                 .activity(this)
                 .adapter(this)
                 .view(turbolinksView);
+        webView.loadUrl(baseUrl + SHELL_RELATIVE_URL);
 
         handleIntent(getIntent());
 
@@ -426,11 +427,7 @@ public class MainActivity extends AppCompatActivity implements TurbolinksAdapter
                 //Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(location), this, MainActivity.class);
                 //setIntent(intent);
                 TurbolinksSession.getDefault(this).progressView(LayoutInflater.from(this).inflate(R.layout.turbolinks_progress, turbolinksView, false), R.id.turbolinks_progress_indicator, 500);
-                if(this.location==null){
-                    TurbolinksSession.getDefault(this).visit(baseUrl + SHELL_RELATIVE_URL + "#" + location);
-                }else{
-                    TurbolinksSession.getDefault(this).visit(location);
-                }
+                TurbolinksSession.getDefault(this).visit(location);
                 this.location = location;
             }
         }else{

@@ -288,10 +288,10 @@ public class MainActivity extends AppCompatActivity implements TurbolinksAdapter
                 .activity(this)
                 .adapter(this)
                 .view(turbolinksView);
-        webView.loadUrl(baseUrl + SHELL_RELATIVE_URL);
-
-        handleIntent(getIntent());
-
+        if(savedInstanceState==null) {
+            webView.loadUrl(baseUrl + SHELL_RELATIVE_URL);
+            handleIntent(getIntent());
+        }
     }
 
     @Override
@@ -322,6 +322,21 @@ public class MainActivity extends AppCompatActivity implements TurbolinksAdapter
         // Since the webView is shared between activities, we need to tell Turbolinks
         // to load the location from the previous activity upon restarting
         handleLocation(location);
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putString("location",location);
+        super.onSaveInstanceState(outState);
+        webView.saveState(outState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        webView.restoreState(savedInstanceState);
+        this.location = webView.getUrl();
+        handleLocation(savedInstanceState.getString("location"));
     }
 
     @Override
@@ -426,9 +441,11 @@ public class MainActivity extends AppCompatActivity implements TurbolinksAdapter
             }else {
                 //Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(location), this, MainActivity.class);
                 //setIntent(intent);
-                TurbolinksSession.getDefault(this).progressView(LayoutInflater.from(this).inflate(R.layout.turbolinks_progress, turbolinksView, false), R.id.turbolinks_progress_indicator, 500);
-                TurbolinksSession.getDefault(this).visit(location);
-                this.location = location;
+                if(!location.equals(this.location)) {
+                    TurbolinksSession.getDefault(this).progressView(LayoutInflater.from(this).inflate(R.layout.turbolinks_progress, turbolinksView, false), R.id.turbolinks_progress_indicator, 500);
+                    TurbolinksSession.getDefault(this).visit(location);
+                    this.location = location;
+                }
             }
         }else{
             // not a URL we handle, so open something else (probably a web browser to take care of it)
